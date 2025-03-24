@@ -14,7 +14,7 @@ export default function TabLayout() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      {/* ✅ Show header only on main tabs */}
+    
       <Header />
       <Tabs 
         tabBar={(props) => <MyTabBar {...props} />} // Use the custom TabBar component
@@ -31,35 +31,35 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             tabBarIcon: ({ color }) => <Feather name="users" size={26} color={color} />,
-            tabBarLabel: () => null, // Remove label
+            tabBarLabel: () => null, 
           }} 
         />
         <Tabs.Screen 
           name="index" 
           options={{
             tabBarIcon: ({ color }) => <FontAwesome5 name="calendar-alt" size={26} color={color} />,
-            tabBarLabel: () => null, // Remove label
+            tabBarLabel: () => null, 
           }} 
         />
         <Tabs.Screen 
           name="ticket" 
           options={{
             tabBarIcon: ({ color }) => <MaterialIcons name="receipt-long" size={26} color={color} />,
-            tabBarLabel: () => null, // Remove label
+            tabBarLabel: () => null, 
           }} 
         />
         <Tabs.Screen 
           name="assets" 
           options={{
             tabBarIcon: ({ color }) => <FontAwesome5 name="mobile" size={26} color={color} />,
-            tabBarLabel: () => null, // Remove label
+            tabBarLabel: () => null, 
           }} 
         />
         <Tabs.Screen 
           name="food" 
           options={{
             tabBarIcon: ({ color }) => <Ionicons name="fast-food" size={26} color={color}  />,
-            tabBarLabel: () => null, // Remove label
+            tabBarLabel: () => null, 
           }} 
         />
       </Tabs>

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList, Modal, TextInput, Button } from
 import { MaterialIcons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import "nativewind";
+import RenderItem from "../../components/Assets/RenderItem";
 
 const initialAssets = [
   { id: 1, name: "Samsung Tab S8", icon: "tablet", taken: false },
@@ -76,24 +77,24 @@ const Assets = () => {
     setTextInput(""); // Reset input field
   };
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity
-      onPress={() => !item.taken && handlePress(item.id)}
-      className={`w-28 h-36 m-2 p-3 rounded-xl items-center justify-between 
-      ${selectedAssets.includes(item.id) ? "bg-[#d0e4cd]" : item.taken ? "bg-red-400 opacity-50" : "bg-[#e3e6e3]"}`}
-      disabled={item.taken}
-    >
-      <MaterialIcons name={item.icon} size={40} color="black" />
-      <Text className="text-xs text-center mt-2">{item.name}</Text>
-      <TouchableOpacity onPress={() => !item.taken && handlePress(item.id)}>
-        {selectedAssets.includes(item.id) ? (
-          <MaterialIcons name="check-box" size={24} color="gray" />
-        ) : (
-          <MaterialIcons name="check-box-outline-blank" size={24} color="black" />
-        )}
-      </TouchableOpacity>
-    </TouchableOpacity>
-  );
+  // const renderItem = ({ item }) => (
+  //   <TouchableOpacity
+  //     onPress={() => !item.taken && handlePress(item.id)}
+  //     className={`w-28 h-36 m-2 p-3 rounded-xl items-center justify-between 
+  //     ${selectedAssets.includes(item.id) ? "bg-[#d0e4cd]" : item.taken ? "bg-red-400 opacity-50" : "bg-[#e3e6e3]"}`}
+  //     disabled={item.taken}
+  //   >
+  //     <MaterialIcons name={item.icon} size={40} color="black" />
+  //     <Text className="text-xs text-center mt-2">{item.name}</Text>
+  //     <TouchableOpacity onPress={() => !item.taken && handlePress(item.id)}>
+  //       {selectedAssets.includes(item.id) ? (
+  //         <MaterialIcons name="check-box" size={24} color="gray" />
+  //       ) : (
+  //         <MaterialIcons name="check-box-outline-blank" size={24} color="black" />
+  //       )}
+  //     </TouchableOpacity>
+  //   </TouchableOpacity>
+  // );
 
   return (
     <View className="flex-1  ">
@@ -131,13 +132,14 @@ const Assets = () => {
         data={assets}
         keyExtractor={(item) => item.id.toString()}
         numColumns={3}
-        renderItem={renderItem}
+        renderItem={({ item }) => <RenderItem item={item} selectedAssets={selectedAssets} handlePress={handlePress} />}
         contentContainerClassName="items-center "
+        showsVerticalScrollIndicator={false}
       />
 
       {/* Modal for Text Input */}
       <Modal visible={modalVisible} transparent={true} animationType="fade">
-  <View className="flex-1 justify-center items-center bg-black  backdrop-opacity-20">
+  <View className="flex-1 justify-center items-center bg-black/50">
     <View className="bg-white p-5 rounded-lg w-[90%]">
       <Text className="text-lg font-bold mb-4">Enter Details</Text>
       <TextInput

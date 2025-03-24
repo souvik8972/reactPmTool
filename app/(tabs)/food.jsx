@@ -88,7 +88,7 @@ const FoodComponent = () => {
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}
       >
-        <View className="flex-1 justify-center items-center bg-[#FDF7F7]">
+        <View className="flex-1 justify-center items-center bg-black/50">
           <View className="bg-white p-6 rounded-2xl shadow-lg w-80 h-60 items-center relative">
             <View className="absolute -top-10 w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center">
               <Text style={{ fontSize: 30 }}>👍</Text>

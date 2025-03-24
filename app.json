@@ -31,7 +31,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/Medtrix_logo.png",
-          "imageWidth": 200,
+          "imageWidth": 1000,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
