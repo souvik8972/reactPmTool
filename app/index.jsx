@@ -15,7 +15,7 @@ const Index = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <View className="flex-1 bg-white px-6  items-center">
+    <View className="flex-1  bg-white px-6  items-center">
       {/* Logo */}
       <View style={{marginTop:80,marginBottom:30}} className="items-center mb-8">
         <Image source={require("../assets/images/Medtrix_logo.jpg")} className="w-[250px] " resizeMode="contain" />

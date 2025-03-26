@@ -9,5 +9,9 @@ module.exports = {
   theme: {
     extend: {},
   },
+  fontFamily: {
+    SpaceMono: ["SpaceMono"],
+  
+  },
   plugins: [],
 }

@@ -12,8 +12,10 @@ const Header = () => {
       {/* Right Profile Image with Notification Badge */}
       <TouchableOpacity  className=" px-4 py-3 flex flex-row   items-center ">
         {/* Profile Image */}
-        <Text className='text-[18px]'>Hello Souvik</Text>
-        <Feather name="user" size={40} color="black" />
+        <Text className='text-[20px] mr-2 font-bold'>Hello Abc</Text>
+      <View>
+      <Image source={require('../assets/images/Avatar.png')} className="w-12 h-12 bg-red-700" resizeMode="contain" />
+      </View>
         
      
         
