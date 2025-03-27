@@ -62,7 +62,7 @@ export default function TaskScreen() {
   );
 
   return (
-    <View className="flex-1 p-4 bg-gray-100">
+    <View className="flex-1 p-4 pt-0 bg-gray-100">
       <DropDown open={open} setOpen={setOpen} items={items} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
 
       <View className="flex-row items-center border  border-gray-300 shadow-[0px_5px_3px_1px_rgba(0,_0,_0,_0.1)] rounded-[12px] h-[60px] p-2 my-4 bg-white">
