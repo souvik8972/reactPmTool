@@ -55,6 +55,7 @@ export default function ResourcesScreen() {
   return (
      <View style={{flex:1}}>
     <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={tw`flex-1`}>
+      <Text className='mx-3 mb-6  text-lg font-medium'>Task Availability</Text>
        
     <ScrollView style={{flexGrow:1}}>
         <View className="flex-row  justify-evenly m-0 p-0 ">
@@ -64,8 +65,8 @@ export default function ResourcesScreen() {
         </View>
  
        
-        <View className='mx-4 mt-4'>
-          <Text style={tw`text-lg font-semibold`}>Team Utilization:</Text>
+        <View className='mx-4 mt-5 mb-2'>
+          <Text style={tw`text-lg `}>Team Utilization:</Text>
           <View style={tw`flex-row items-center justify-between mt-2 mr-16  `}>
             <GradientProgressBar progress={0.5}  />
             <Text className={'p-2'}>50%</Text>
@@ -74,7 +75,7 @@ export default function ResourcesScreen() {
         </View>
          
         {/* Search Input */}
-        <View style={tw`flex-row items-center border border-gray-300 rounded-xl bg-gray-100 mx-3 p-3 shadow-lg mb-4 mt-2`}>
+        <View style={tw`flex-row items-center border border-gray-300 rounded-xl bg-gray-100 mx-3  shadow-lg mb-4 mt-2 pr-4 pl-3  pt-3  pb-3`}>
           <TextInput
             placeholder="Search"
             value={searchText}
@@ -103,12 +104,12 @@ export default function ResourcesScreen() {
  
 // 💡 Reusable Components
 const TabButton = ({ tab, activeTab, setActiveTab }) => (
-  <TouchableOpacity onPress={() => setActiveTab(tab)} className="h-fit  min-w-fit w-1/5  ">
+  <TouchableOpacity onPress={() => setActiveTab(tab)} className="   " style={{minWidth:80, alignSelf:'flext-start' }} >
     <LinearGradient
       colors={activeTab === tab ? ["#D01313", "#6A0A0A"] : ["#333", "#333"]}
       style={tw` rounded-lg`}
     >
-      <Text style={tw`text-lg text-white text-center font-semibold pt-2 pb-2 `}>{tab}</Text>
+      <Text style={tw` text-white text-center  p-4 `}>{tab}</Text>
     </LinearGradient>
   </TouchableOpacity>
 );
@@ -130,10 +131,11 @@ const TeamMember = ({ item, selectedDropdown, setSelectedDropdown }) => {
   };
  
   return (
-    <View style={tw`p-4 bg-gray-200 rounded-lg shadow-md my-2 mx-4`} >
+    <View>
+    <View style={[tw`p-3 rounded-lg shadow-md my-4 mx-3`, {backgroundColor:'#EBEBEB'}]}  >
      
       <TouchableOpacity onPress={handleToggle} className='flex-row justify-between'>
-        <Text style={tw`text-base font-semibold`}>{item.name}</Text>
+        <Text style={''}>{item.name}</Text>
           <MaterialIcons name={selectedDropdown === item.id ? "keyboard-arrow-down" : "chevron-right"} size={35} color="black" />
           </TouchableOpacity>
      
@@ -151,14 +153,17 @@ const TeamMember = ({ item, selectedDropdown, setSelectedDropdown }) => {
     <Text className="text-gray-500 text-lg ">Available: {item.Available} hr</Text>
   </View> */}
 {/* </TouchableOpacity> */}
- 
+    </View>
  
  
       {/* Dropdown Content */}
       {selectedDropdown === item.id && (
         <TaskDropdown taskData={item.taskData} />
       )}
+     
+ 
     </View>
+   
   );
 };
  
@@ -174,11 +179,12 @@ const TaskDropdown = ({ taskData }) => {
  
  
   return (
-    <View style={tw`  rounded-lg mt-10`}>
+    <View style={[tw`p-4  rounded-lg shadow-md  mx-3`,{backgroundColor:'#EBEBEB'}]} >
+    <View style={tw`  rounded-lg mt-4 mb-4`}>
  
           {/* Google search bar */}
           <Animated.View>
-          <View className="flex-row space-x-3 items-center border border-gray-300 rounded-full bg-[#BDBDBD]  w-2/3 text-white mb-2 mt-2">
+          <View className="flex-row space-x-3 items-center border border-gray-300 rounded-full   w-2/3 text-white mb-2 mt-2" style={{backgroundColor:'#B4B4B4'}}>
           <Icon name="search1" size={20} color="white" className="p-2" />
      
             <TextInput
@@ -192,26 +198,29 @@ const TaskDropdown = ({ taskData }) => {
           </Animated.View>
  
       {/* Date Selector */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="my-2">
-        {dates.map((date, index) => (
-          <TouchableOpacity key={index} onPress={() => setSelectedDate(date)}>
-            <LinearGradient colors={selectedDate === date ? ["#D01313", "#6A0A0A"] : ["#BDBDBD", "#BDBDBD"]}
-              style={tw`px-4 py-6 rounded-full mx-1 text-white `}>
-              <Text style={tw` rounded-lg font-bold text-white`}>{date.split(" ")[0]}</Text>
-              <Text style={tw` rounded-lg text-center font-bold text-white`}>{date.split(" ")[1]}</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2">
+  {dates.map((date) => (
+    <TouchableOpacity key={date} onPress={() => setSelectedDate(date)}>
+      <LinearGradient
+        colors={selectedDate === date ? ["#D01313", "#6A0A0A"] : ["#BDBDBD", "#BDBDBD"]}
+        style={[tw`px-3 py-6 rounded-full mx-1`, {minWidth:60}]} // ✅ Ensures equal width
+      >
+        <Text style={tw`font-semibold text-white text-center`}>{date.split(" ")[0]}</Text>
+        <Text style={tw` text-lg font-bold text-white text-center`}>{date.split(" ")[1]}</Text>
+      </LinearGradient>
+    </TouchableOpacity>
+  ))}
+</ScrollView>
+ 
  
       {/* Task Table */}
       <View style={tw`border-t border-gray-400 mt-2 pt-2`}>
         <View style={tw`flex-row border-b border-gray-400 pb-2`}>
-          <Text style={tw`text-sm font-bold w-1/5`}>ID</Text>
-          <Text style={tw`text-sm font-bold w-1/5`}>Title</Text>
-          <Text style={tw`text-sm font-bold w-1/5 pl-2`}>LH</Text>
-          <Text style={tw`text-sm font-bold w-1/5`}>PH</Text>
-          <Text style={tw`text-sm font-bold w-1/5`}>Owner</Text>
+          <Text style={tw`text-sm font-semibold w-1/5`}>ID</Text>
+          <Text style={tw`text-sm font-semibold w-1/5`}>Title</Text>
+          <Text style={tw`text-sm font-semibold w-1/5 pl-2`}>LH</Text>
+          <Text style={tw`text-sm font-semibold w-1/5`}>PH</Text>
+          <Text style={tw`text-sm font-semibold w-1/5`}>Owner</Text>
         </View>
         {FilterTaskData.length === 0 ? (
           <Text style={tw`text-gray-500 text-center mt-2`}>No tasks available</Text>
@@ -227,6 +236,7 @@ const TaskDropdown = ({ taskData }) => {
           ))
         )}
       </View>
+    </View>
     </View>
   );
 };

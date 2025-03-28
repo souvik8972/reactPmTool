@@ -19,8 +19,8 @@ const IssueTracker = () => {
     Hardware: 'hardware-chip-outline',
     Software: 'logo-windows',
     Server: 'server-outline',
-    Internet: 'globe',  // Fixed: Changed to 'globe' (Available in Ionicons)
-    Other: 'help-circle',  // Fixed: Changed to 'help-circle' (Available in Ionicons)
+    Internet: 'globe',  
+    Other: 'help-circle',  
   };
   
 
@@ -61,9 +61,9 @@ const IssueTracker = () => {
   <View className="items-center justify-center mt-10">
     <Image 
       source={require('../../assets/images/noIssue.png')}  // Replace with your image path
-      style={{ width: 200, height: 200, resizeMode: 'contain' }}
+      style={{ width: 350, height: 350, resizeMode: 'contain' }}
     />
-    <Text className="text-lg font-bold text-gray-500 text-center mt-5">
+    <Text className="text-xl font-bold text-red-800 text-center mt-2">
   YooHoo! No Issues Present 
 </Text>
   </View>

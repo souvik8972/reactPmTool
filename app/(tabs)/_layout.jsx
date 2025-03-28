@@ -1,5 +1,5 @@
-import { Stack, Tabs, useSegments } from 'expo-router';
-import React from 'react';
+import { Redirect, Stack, Tabs, useSegments } from 'expo-router';
+import React, { useContext } from 'react';
 import { SafeAreaView } from 'react-native';
 import Header from '../../components/Header';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -8,9 +8,15 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Octicons from '@expo/vector-icons/Octicons';
 import MyTabBar from '../../components/MyTabBar'; // import the custom TabBar component
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { AuthContext } from "../../context/AuthContext";
 
 export default function TabLayout() {
   const segments = useSegments();
+  const {user}=useContext(AuthContext)
+
+
+
+  
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -44,7 +50,7 @@ export default function TabLayout() {
         <Tabs.Screen 
           name="ticket" 
           options={{
-            tabBarIcon: ({ color }) => <MaterialIcons name="receipt-long" size={26} color={color} />,
+            tabBarIcon: ({ color }) => <MaterialIcons name="receipt-long" size={30} color={color} />,
             tabBarLabel: () => null, 
           }} 
         />

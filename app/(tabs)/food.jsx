@@ -16,8 +16,8 @@ const FoodComponent = () => {
   };
 
   return (
-    <View className="flex-1 items-center justify-center bg-gray-100 p-5 pt-0">
-      <View className="w-full h-[200px]">
+    <View className="flex-1 items-center justify-center  bg-gray-100 p-5 pt-0">
+      <View className="w-full h-[250px]">
   <Image source={require("../../assets/images/food2.png")} 
     style={{ width: '100%', height: '100%', resizeMode: 'contain' }}  />
 </View>
@@ -32,7 +32,7 @@ const FoodComponent = () => {
         ) : (
           <>
             {/* Heading */}
-            <Text className="text-lg font-semibold text-center p-10 pt-0">
+            <Text className="text-lg font-semibold text-center p-10 pb-0 pt-0">
               Are you coming to the office tomorrow?
             </Text>
 
